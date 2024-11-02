@@ -1,8 +1,19 @@
 {
+    "name": "medicalmundi/oe-module-todo-list",
     "type": "project",
-    "license": "proprietary",
-    "minimum-stability": "stable",
-    "prefer-stable": true,
+    "description": "Symfony ecosystem.",
+    "keywords": [
+        "symfony",
+        "symfony bundles",
+        "symfony projects"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Teclai Zerai",
+            "email": "teclaizerai@gmail.com"
+        }
+    ],
     "require": {
         "php": ">=8.1",
         "ext-ctype": "*",
@@ -20,6 +31,27 @@
         "symfony/security-bundle": "6.4.*",
         "symfony/yaml": "6.4.*"
     },
+    "replace": {
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php72": "*",
+        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php74": "*",
+        "symfony/polyfill-php80": "*",
+        "symfony/polyfill-php81": "*"
+    },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "symfony/browser-kit": "6.4.*",
+        "symfony/css-selector": "6.4.*",
+        "symfony/debug-bundle": "6.4.*",
+        "symfony/phpunit-bridge": "^7.1",
+        "symfony/stopwatch": "6.4.*",
+        "symfony/web-profiler-bundle": "6.4.*"
+    },
     "config": {
         "allow-plugins": {
             "php-http/discovery": true,
@@ -27,6 +59,12 @@
             "symfony/runtime": true
         },
         "sort-packages": true
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": false,
+            "require": "6.4.*"
+        }
     },
     "autoload": {
         "psr-4": {
@@ -38,15 +76,8 @@
             "App\\Tests\\": "tests/"
         }
     },
-    "replace": {
-        "symfony/polyfill-ctype": "*",
-        "symfony/polyfill-iconv": "*",
-        "symfony/polyfill-php72": "*",
-        "symfony/polyfill-php73": "*",
-        "symfony/polyfill-php74": "*",
-        "symfony/polyfill-php80": "*",
-        "symfony/polyfill-php81": "*"
-    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
@@ -58,23 +89,5 @@
         "post-update-cmd": [
             "@auto-scripts"
         ]
-    },
-    "conflict": {
-        "symfony/symfony": "*"
-    },
-    "extra": {
-        "symfony": {
-            "allow-contrib": false,
-            "require": "6.4.*"
-        }
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^9.5",
-        "symfony/browser-kit": "6.4.*",
-        "symfony/css-selector": "6.4.*",
-        "symfony/debug-bundle": "6.4.*",
-        "symfony/phpunit-bridge": "^7.1",
-        "symfony/stopwatch": "6.4.*",
-        "symfony/web-profiler-bundle": "6.4.*"
     }
 }
