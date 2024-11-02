@@ -111,7 +111,7 @@ jobs:
 #          ./vendor/bin/phparkitect check --ansi
 
       #
-      # Additional checks, they are precondition before
+      # Additional checks, they are pre-condition before
       # 'acceptance stage' phase of the CI
       #
 
