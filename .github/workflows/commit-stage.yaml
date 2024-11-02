@@ -8,6 +8,11 @@ on:
         required: true
         type: string
 
+defaults:
+  run:
+    shell: bash
+    working-directory: api
+    
 env:
   # PHP SETTINGS
   PHP_EXTENSIONS: json
@@ -72,7 +77,7 @@ jobs:
 
       - name: Install Composer dependencies
         run: |
-          composer install --prefer-dist --no-progress --no-scripts --ansi
+          composer install --prefer-dist --no-scripts --ansi
 
       - name: Run composer validate
         run: |
@@ -203,17 +208,17 @@ jobs:
 
           - name: Install dependencies
             run: |
-                composer install --prefer-dist --no-progress --ansi
+                composer install --prefer-dist --ansi
 
           - name: Run unit tests
             if: ${{ !matrix.generate-coverage-report }}
             run: |
-                vendor/bin/phpunit --testsuite=unit --testdox --no-progress --colors=always
+                vendor/bin/phpunit --testsuite=unit --testdox --colors=always
 
           - name: Run unit tests WITH COVERAGE
             if: ${{ matrix.generate-coverage-report }}
             run: |
-                vendor/bin/phpunit --testsuite=unit --testdox --no-progress --colors=always \
+                vendor/bin/phpunit --testsuite=unit --testdox --colors=always \
                 --coverage-clover ${{ vars.UNIT_TEST_CLOVER_FILENAME }} \
                 --testdox-text ${{ vars.UNIT_TEST_DOC_FILENAME }}
 
