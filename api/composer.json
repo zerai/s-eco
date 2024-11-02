@@ -58,6 +58,12 @@
             "symfony/flex": true,
             "symfony/runtime": true
         },
+        "audit": {
+            "abandoned": "report",
+            "ignore": {
+            }
+        },
+        "optimize-autoloader": true,
         "sort-packages": true
     },
     "extra": {
