@@ -93,11 +93,11 @@ jobs:
         run: |
           composer audit --ansi
 
-#      - name: Run ecs CODING STANDARDS
-#        if: always()
-#        run: |
-#          composer bin ecs install
-#          ./vendor/bin/ecs --ansi
+      - name: Run ecs CODING STANDARDS checks
+        if: always()
+        run: |
+          composer bin ecs install
+          ./vendor/bin/ecs --ansi
 #
 #      - name: Run psalm STATIC ANALYSIS
 #        if: always()
