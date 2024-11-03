@@ -61,9 +61,7 @@
             "symfony/runtime": true
         },
         "audit": {
-            "abandoned": "report",
-            "ignore": {
-            }
+            "abandoned": "report"
         },
         "optimize-autoloader": true,
         "sort-packages": true
@@ -92,15 +90,15 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
-        "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
-        },
         "post-install-cmd": [
             "@auto-scripts"
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        }
     }
 }
