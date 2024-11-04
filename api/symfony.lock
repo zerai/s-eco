@@ -26,6 +26,30 @@
             "migrations/.gitignore"
         ]
     },
+    "luzrain/workerman-bundle": {
+        "version": "0.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "0.1",
+            "ref": "913b079c70c523b869e8eb936b0234f4e6f6ee11"
+        },
+        "files": [
+            "config/packages/workerman.yaml"
+        ]
+    },
+    "nyholm/psr7": {
+        "version": "1.8",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "4a8c0345442dcca1d8a2c65633dcf0285dd5a5a2"
+        },
+        "files": [
+            "config/packages/nyholm_psr7.yaml"
+        ]
+    },
     "phpunit/phpunit": {
         "version": "9.6",
         "recipe": {
