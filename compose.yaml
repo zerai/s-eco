@@ -1,0 +1,74 @@
+
+services:
+  app:
+    image: ${IMAGES_PREFIX:-}app-php
+    profiles: [ default, all ]
+    build:
+      context: ./_etc/docker/php-cli
+      dockerfile: Dockerfile
+    depends_on:
+      database:
+        condition: service_healthy
+        restart: false
+    volumes:
+      - "./api:/app"
+    environment:
+      APP_ENV: "dev"
+      APP_DEBUG: "true"
+      DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@database:5432/app?serverVersion=16&charset=utf8
+
+###> doctrine/doctrine-bundle ###
+  database:
+    profiles: [ default, postgres, all ]
+    image: postgres:${POSTGRES_VERSION:-16}-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-app}
+      # You should definitely change the password in production
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
+      POSTGRES_USER: ${POSTGRES_USER:-app}
+    volumes:
+      - database_data:/var/lib/postgresql/data:rw
+      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
+      # - ./docker/db/data:/var/lib/postgresql/data:rw
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-app} -d ${POSTGRES_DB:-postgres}" ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+###< doctrine/doctrine-bundle ###
+
+
+
+
+  #########################################################################################################################
+  #########################################################################################################################
+  ##
+  ##   infra services
+  ##
+  #########################################################################################################################
+  #########################################################################################################################
+
+  ######################################################################################################################
+  #
+  #   Database UI - PgAdmin
+  #
+  ######################################################################################################################
+  pgadmin:
+    profiles: [ postgres-ui, all ]
+    image: dpage/pgadmin4:latest
+    ports:
+      - "8181:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@example.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+    volumes:
+      - ./_etc/docker/pgAdmin/servers.json:/pgadmin4/servers.json
+
+
+volumes:
+###> doctrine/doctrine-bundle ###
+  database_data:
+###< doctrine/doctrine-bundle ###
