@@ -11,4 +11,5 @@ return [
     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true],
     Luzrain\WorkermanBundle\WorkermanBundle::class => ['all' => true],
     Nelexa\RoachPhpBundle\RoachPhpBundle::class => ['all' => true],
+    Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
 ];
