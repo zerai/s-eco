@@ -1,7 +1,7 @@
 workerman:
     servers:
         -
-            name: 'Symfony webserver'
+            name: 'S-eco webserver'
             listen: http://0.0.0.0:80
             processes: 4
 
@@ -9,5 +9,19 @@ workerman:
         exception:
             active: true
 
-        file_monitor:
+        max_requests:
             active: true
+            requests: 1000
+            dispersion: 20
+
+when@dev:
+    workerman:
+        reload_strategy:
+            exception:
+                active: true
+
+            file_monitor:
+                active: true
+                source_dir:
+                    - '%kernel.project_dir%/src'
+                    - '%kernel.project_dir%/config'
