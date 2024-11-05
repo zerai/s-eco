@@ -10,14 +10,21 @@ services:
       database:
         condition: service_healthy
         restart: false
+    ports:
+      # HTTP
+      - target: 80
+        published: ${HTTP_PORT:-80}
+        protocol: tcp
     volumes:
       - "./api:/app"
     environment:
       APP_ENV: "dev"
       APP_DEBUG: "true"
+      APP_RUNTIME: "Luzrain\\WorkermanBundle\\Runtime"
       DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@database:5432/app?serverVersion=16&charset=utf8
+    command: "php public/index.php start"
 
-###> doctrine/doctrine-bundle ###
+  ###> doctrine/doctrine-bundle ###
   database:
     profiles: [ default, postgres, all ]
     image: postgres:${POSTGRES_VERSION:-16}-alpine

@@ -33,4 +33,5 @@ vendor/
 .env.local.php
 .env.test
 
+**/_etc/
 context/
