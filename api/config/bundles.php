@@ -10,4 +10,5 @@ return [
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true],
     Luzrain\WorkermanBundle\WorkermanBundle::class => ['all' => true],
+    Nelexa\RoachPhpBundle\RoachPhpBundle::class => ['all' => true],
 ];
