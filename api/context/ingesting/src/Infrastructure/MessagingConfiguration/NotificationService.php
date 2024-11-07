@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Spider\MessagingConfiguration;
+namespace Ingesting\Infrastructure\MessagingConfiguration;
 
 use Ecotone\Messaging\Attribute\Asynchronous;
 use Ecotone\Modelling\Attribute\EventHandler;

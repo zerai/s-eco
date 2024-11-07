@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace App\Process;
+namespace Ingesting\Infrastructure\Process;
 
-use App\Spider\FrameworkBundleSpider;
+use Ingesting\Infrastructure\Spider\FrameworkBundleSpider;
 use Luzrain\WorkermanBundle\Attribute\AsProcess;
 use RoachPHP\Roach;
 

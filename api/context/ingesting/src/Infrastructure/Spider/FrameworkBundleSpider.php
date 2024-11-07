@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace App\Spider;
+namespace Ingesting\Infrastructure\Spider;
 
-use App\Spider\ItemProcessor\EventPublisherProcessorItemProcessor;
-use App\Spider\ItemProcessor\ForkedScoreProcessorItemProcessor;
-use App\Spider\ItemProcessor\StarredScoreProcessorItemProcessor;
 use Exception;
+use Ingesting\Infrastructure\Spider\ItemProcessor\EventPublisherProcessorItemProcessor;
+use Ingesting\Infrastructure\Spider\ItemProcessor\ForkedScoreProcessorItemProcessor;
+use Ingesting\Infrastructure\Spider\ItemProcessor\StarredScoreProcessorItemProcessor;
 use RoachPHP\Downloader\Middleware\RequestDeduplicationMiddleware;
 use RoachPHP\Extensions\LoggerExtension;
 use RoachPHP\Extensions\StatsCollectorExtension;

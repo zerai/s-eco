@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Process;
+namespace Ingesting\Infrastructure\Process;
 
 use Ecotone\Messaging\Config\ConsoleCommandRunner;
 use Luzrain\WorkermanBundle\Attribute\AsProcess;
