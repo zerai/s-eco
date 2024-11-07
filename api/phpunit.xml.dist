@@ -23,18 +23,22 @@
         </testsuite>
         <testsuite name="unit">
             <directory>tests/Unit</directory>
+            <directory>context/ingesting/tests/Unit</directory>
         </testsuite>
         <testsuite name="integration">
             <directory>tests/Integration</directory>
+            <directory>context/ingesting/tests/Integration</directory>
         </testsuite>
         <testsuite name="functional">
             <directory>tests/Functional</directory>
+            <directory>context/ingesting/tests/Functional</directory>
         </testsuite>
     </testsuites>
 
     <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">src</directory>
+            <directory suffix=".php">context/ingesting/src</directory>
         </include>
     </coverage>
 
