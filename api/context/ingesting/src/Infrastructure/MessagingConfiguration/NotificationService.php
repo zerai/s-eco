@@ -7,9 +7,9 @@ use Ecotone\Modelling\Attribute\EventHandler;
 
 class NotificationService
 {
-    #[Asynchronous("spiders")]
-    #[EventHandler(endpointId: "notifyAboutNeworder")]
-    public function notifyAboutNewOrder(DependantRepositoryDetected $event): void
+    #[Asynchronous("async_ingesting")]
+    #[EventHandler(endpointId: "notifyAboutNewDependantRepository")]
+    public function notifyAboutNewDependantRepository(DependantRepositoryDetected $event): void
     {
         echo $event->repository . "\n";
     }

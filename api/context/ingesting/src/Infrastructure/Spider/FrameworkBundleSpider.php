@@ -22,8 +22,7 @@ final class FrameworkBundleSpider extends BasicSpider
      * @var string[]
      */
     public array $startUrls = [
-        #'https://github.com/symfony/framework-bundle/network/dependents?dependent_type=REPOSITORY',
-        'https://github.com/symfony/framework-bundle/network/dependents?dependent_type=REPOSITORY&dependents_after=NDA0NTc5MDQzMzc',
+        'https://github.com/symfony/framework-bundle/network/dependents?dependent_type=REPOSITORY',
     ];
 
     public array $downloaderMiddleware = [

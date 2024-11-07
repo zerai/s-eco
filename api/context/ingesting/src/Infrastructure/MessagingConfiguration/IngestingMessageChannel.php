@@ -5,11 +5,11 @@ namespace Ingesting\Infrastructure\MessagingConfiguration;
 use Ecotone\Amqp\AmqpBackedMessageChannelBuilder;
 use Ecotone\Messaging\Attribute\ServiceContext;
 
-class SpiderMessageChannel
+class IngestingMessageChannel
 {
     #[ServiceContext]
     public function spidersChannel()
     {
-        return AmqpBackedMessageChannelBuilder::create("spiders");
+        return AmqpBackedMessageChannelBuilder::create("async_ingesting");
     }
 }
