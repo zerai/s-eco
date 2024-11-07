@@ -3,5 +3,24 @@ services:
 ###> doctrine/doctrine-bundle ###
   database:
     ports:
-      - "5432"
+      - target: 5432
+        published: 5432
+        protocol: tcp
 ###< doctrine/doctrine-bundle ###
+
+
+
+  ######################################################################################################################
+  #
+  #   Messaging & queue - RabbitMq
+  #
+  ######################################################################################################################
+  mbroker:
+    ports:
+      - target: 5672
+        published: 5672
+        protocol: tcp
+      # HTTP
+      - target: 15672
+        published: ${RABBITMQ_HTTP_PORT:-15672}
+        protocol: tcp

@@ -3,12 +3,16 @@ services:
   app:
     image: ${IMAGES_PREFIX:-}app-php
     profiles: [ default, all ]
+    restart: unless-stopped
     build:
       context: ./_etc/docker/php-cli
       dockerfile: Dockerfile
     depends_on:
       database:
         condition: service_healthy
+        restart: false
+      mbroker:
+        condition: service_started
         restart: false
     ports:
       # HTTP
@@ -22,6 +26,7 @@ services:
       APP_DEBUG: "true"
       APP_RUNTIME: "Luzrain\\WorkermanBundle\\Runtime"
       DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@database:5432/app?serverVersion=16&charset=utf8
+      ENQUEUE_DSN: amqp://rabbit-user:rabbit-password@mbroker:5672/%2f
     command: "php public/index.php start"
 
   ###> doctrine/doctrine-bundle ###
@@ -55,6 +60,20 @@ services:
   ##
   #########################################################################################################################
   #########################################################################################################################
+
+  ######################################################################################################################
+  #
+  #   Messaging & queue - RabbitMq
+  #
+  ######################################################################################################################
+  mbroker:
+    profiles: [ default, rabbitmq, all ]
+    image: rabbitmq:3-management
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER:-rabbit-user}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS:-rabbit-password}
+      RABBITMQ_DEFAULT_VHOST: "/"
 
   ######################################################################################################################
   #

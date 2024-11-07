@@ -2,6 +2,7 @@
 
 namespace App\Spider;
 
+use App\Spider\ItemProcessor\EventPublisherProcessorItemProcessor;
 use App\Spider\ItemProcessor\ForkedScoreProcessorItemProcessor;
 use App\Spider\ItemProcessor\StarredScoreProcessorItemProcessor;
 use Exception;
@@ -15,11 +16,14 @@ use Symfony\Component\DomCrawler\Crawler;
 
 final class FrameworkBundleSpider extends BasicSpider
 {
+    public const TARGET_REPOSITORY = 'symfony/framework-bundle';
+
     /**
      * @var string[]
      */
     public array $startUrls = [
-        'https://github.com/symfony/framework-bundle/network/dependents?dependent_type=REPOSITORY',
+        #'https://github.com/symfony/framework-bundle/network/dependents?dependent_type=REPOSITORY',
+        'https://github.com/symfony/framework-bundle/network/dependents?dependent_type=REPOSITORY&dependents_after=NDA0NTc5MDQzMzc',
     ];
 
     public array $downloaderMiddleware = [
@@ -40,6 +44,7 @@ final class FrameworkBundleSpider extends BasicSpider
                 'min_fork_score' => 2,
             ],
         ],
+        EventPublisherProcessorItemProcessor::class,
     ];
 
     public array $extensions = [
@@ -59,6 +64,7 @@ final class FrameworkBundleSpider extends BasicSpider
         $items = $response
             ->filter('div.Box > div.Box-row.d-flex.flex-items-center')
             ->each(fn (Crawler $node) => [
+                'dependant-from' => self::TARGET_REPOSITORY,
                 'repository' => $node->filter('span.f5.color-fg-muted')->text(),
                 'starred' => $node->filter('div.d-flex.flex-auto.flex-justify-end span.color-fg-muted.text-bold.pl-3')->first()->text(),
                 'fork' => $node->filter('div.d-flex.flex-auto.flex-justify-end span.color-fg-muted.text-bold.pl-3')->last()->text(),

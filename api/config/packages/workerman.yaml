@@ -1,9 +1,9 @@
 workerman:
     servers:
         -
-            name: 'S-eco webserver'
+            name: 'http webserver'
             listen: http://0.0.0.0:80
-            processes: 4
+            processes: 2
 
     reload_strategy:
         exception:
@@ -13,15 +13,17 @@ workerman:
             active: true
             requests: 1000
             dispersion: 20
+        file_monitor:
+            active: true
 
-when@dev:
-    workerman:
-        reload_strategy:
-            exception:
-                active: true
-
-            file_monitor:
-                active: true
-                source_dir:
-                    - '%kernel.project_dir%/src'
-                    - '%kernel.project_dir%/config'
+#when@dev:
+#    workerman:
+#        reload_strategy:
+#            exception:
+#                active: true
+#
+#            file_monitor:
+#                active: true
+#                source_dir:
+#                    - '%kernel.project_dir%/src'
+#                    - '%kernel.project_dir%/config'
