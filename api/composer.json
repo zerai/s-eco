@@ -87,12 +87,14 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/",
+            "Ingesting\\": "context/ingesting/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "App\\Tests\\": "tests/",
+            "IngestingTests\\": "context/ingesting/tests/"
         }
     },
     "minimum-stability": "stable",
