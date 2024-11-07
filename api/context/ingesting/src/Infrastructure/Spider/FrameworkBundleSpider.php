@@ -52,9 +52,9 @@ final class FrameworkBundleSpider extends BasicSpider
         StatsCollectorExtension::class,
     ];
 
-    public int $concurrency = 2;
+    public int $concurrency = 1;
 
-    public int $requestDelay = 0;
+    public int $requestDelay = 5;
 
     /**
      * @return \Generator<ParseResult>

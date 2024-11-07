@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Ingesting\Infrastructure\Process;
+namespace Ingesting\Infrastructure\Worker;
 
 use Ingesting\Infrastructure\Spider\FrameworkBundleSpider;
 use Luzrain\WorkermanBundle\Attribute\AsProcess;
