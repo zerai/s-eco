@@ -26,7 +26,7 @@ class IngestingModuleExtension extends AbstractExtension
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         $container->parameters()
-            ->set('module_catalog.enabled', $config['enabled'])
+            ->set('module_ingesting.enabled', $config['enabled'])
         ;
         $loader = new YamlFileLoader(
             $builder,
@@ -37,6 +37,6 @@ class IngestingModuleExtension extends AbstractExtension
 
     public function getAlias(): string
     {
-        return 'module_catalog';
+        return 'module_ingesting';
     }
 }
