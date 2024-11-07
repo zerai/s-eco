@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace App\Spider\ItemProcessor;
+namespace Ingesting\Infrastructure\Spider\ItemProcessor;
 
-use App\Spider\MessagingConfiguration\DependantRepositoryDetected;
 use Ecotone\Modelling\EventBus;
+use Ingesting\Infrastructure\MessagingConfiguration\DependantRepositoryDetected;
 use RoachPHP\ItemPipeline\ItemInterface;
 use RoachPHP\ItemPipeline\Processors\ItemProcessorInterface;
 use RoachPHP\Support\Configurable;

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Spider\MessagingConfiguration;
+namespace Ingesting\Infrastructure\MessagingConfiguration;
 
 use Ecotone\Amqp\AmqpBackedMessageChannelBuilder;
 use Ecotone\Messaging\Attribute\ServiceContext;
