@@ -16,7 +16,7 @@ class EcotoneWorker
     public function __invoke(): void
     {
         $this->ecotoneCommandRunner->run([
-            'consumerName' => 'spiders',
+            'consumerName' => 'async_ingesting',
         ]);
     }
 }
