@@ -15,6 +15,10 @@ workerman:
             dispersion: 20
         file_monitor:
             active: true
+            source_dir:
+                - '%kernel.project_dir%/src'
+                - '%kernel.project_dir%/config'
+                - '%kernel.project_dir%/context/ingesting/src'
 
 #when@dev:
 #    workerman:
