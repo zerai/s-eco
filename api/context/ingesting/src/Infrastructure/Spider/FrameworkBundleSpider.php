@@ -6,6 +6,7 @@ use Exception;
 use Ingesting\Infrastructure\Spider\ItemProcessor\EventPublisherProcessorItemProcessor;
 use Ingesting\Infrastructure\Spider\ItemProcessor\ForkedScoreProcessorItemProcessor;
 use Ingesting\Infrastructure\Spider\ItemProcessor\StarredScoreProcessorItemProcessor;
+use Ingesting\Infrastructure\Spider\Middleware\RequestCursorMiddleware;
 use RoachPHP\Downloader\Middleware\RequestDeduplicationMiddleware;
 use RoachPHP\Extensions\LoggerExtension;
 use RoachPHP\Extensions\StatsCollectorExtension;
@@ -27,6 +28,7 @@ final class FrameworkBundleSpider extends BasicSpider
 
     public array $downloaderMiddleware = [
         RequestDeduplicationMiddleware::class,
+        RequestCursorMiddleware::class,
     ];
 
     public array $spiderMiddleware = [
@@ -53,7 +55,7 @@ final class FrameworkBundleSpider extends BasicSpider
 
     public int $concurrency = 1;
 
-    public int $requestDelay = 5;
+    public int $requestDelay = 3;
 
     /**
      * @return \Generator<ParseResult>
