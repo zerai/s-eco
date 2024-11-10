@@ -4,7 +4,7 @@ doctrine:
 
         # IMPORTANT: You MUST configure your server version,
         # either here or in the DATABASE_URL env var (see .env file)
-        #server_version: '16'
+        server_version: '16'
 
         profiling_collect_backtrace: '%kernel.debug%'
         use_savepoints: true
@@ -22,6 +22,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
+            Ingesting:
+                type: attribute
+                is_bundle: false
+                dir: '%kernel.project_dir%/context/ingesting/src/Core/Model'
+                prefix: 'Ingesting\Core\Model'
+                alias: Ingesting
 
 when@test:
     doctrine:

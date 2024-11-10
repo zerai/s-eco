@@ -17,8 +17,8 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     Ingesting\:
         resource: '../../../src/'
-#        exclude:
-#            - '../src/DependencyInjection/'
+        exclude:
+            - '../../../src/Core/Model/'
 #            - '../src/Entity/'
 #            - '../src/Kernel.php'
 
