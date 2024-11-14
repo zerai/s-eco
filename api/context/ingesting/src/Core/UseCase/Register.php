@@ -20,6 +20,7 @@ class Register implements ForRegisteringIngestedItem
         //TODO apply validation
 
         $item = new IngestedItem();
+        $item->setDependantFrom($dependantFrom);
         $item->setRepository($repository);
         $item->setStarredScore($starred);
         $item->setForkScore($fork);

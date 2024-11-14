@@ -14,6 +14,9 @@ class IngestedItem
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    private ?string $dependantFrom = null;
+
+    #[ORM\Column(length: 255)]
     private ?string $repository = null;
 
     #[ORM\Column]
@@ -28,6 +31,16 @@ class IngestedItem
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getDependantFrom(): ?string
+    {
+        return $this->dependantFrom;
+    }
+
+    public function setDependantFrom(?string $dependantFrom): static
+    {
+        $this->dependantFrom = $dependantFrom;
     }
 
     public function getRepository(): ?string
