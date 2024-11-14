@@ -1,2 +1,5 @@
 .idea/
 .vscode/
+
+/pwa-cli
+/pwa-vite
