@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Ingesting\Infrastructure\MessagingConfiguration;
+namespace Ingesting\AdapterForRegisteringIngestedItem;
 
 use Ecotone\Messaging\Attribute\Asynchronous;
 use Ecotone\Modelling\Attribute\EventHandler;
 use Ingesting\Core\Port\Driving\ForRegisteringIngestedItem;
 
-class NotificationService
+class AmqpAdapterForRegisteringIngestedItem
 {
     public function __construct(
         private readonly ForRegisteringIngestedItem $ingestionRegistry

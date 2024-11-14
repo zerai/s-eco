@@ -41,6 +41,8 @@ class IngestedItem
     public function setDependantFrom(?string $dependantFrom): static
     {
         $this->dependantFrom = $dependantFrom;
+
+        return $this;
     }
 
     public function getRepository(): ?string

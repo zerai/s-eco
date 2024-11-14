@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Ingesting\Infrastructure\MessagingConfiguration;
+namespace Ingesting\AdapterForRegisteringIngestedItem;
 
 final class DependantRepositoryDetected
 {
