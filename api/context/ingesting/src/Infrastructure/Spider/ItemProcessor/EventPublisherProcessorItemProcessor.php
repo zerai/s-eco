@@ -3,7 +3,7 @@
 namespace Ingesting\Infrastructure\Spider\ItemProcessor;
 
 use Ecotone\Modelling\EventBus;
-use Ingesting\Infrastructure\MessagingConfiguration\DependantRepositoryDetected;
+use Ingesting\AdapterForRegisteringIngestedItem\DependantRepositoryDetected;
 use RoachPHP\ItemPipeline\ItemInterface;
 use RoachPHP\ItemPipeline\Processors\ItemProcessorInterface;
 use RoachPHP\Support\Configurable;
