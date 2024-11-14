@@ -55,7 +55,7 @@ final class FrameworkBundleSpider extends BasicSpider
 
     public int $concurrency = 1;
 
-    public int $requestDelay = 3;
+    public int $requestDelay = 4;
 
     /**
      * @return \Generator<ParseResult>
