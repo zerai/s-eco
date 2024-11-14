@@ -14,13 +14,6 @@ class NotificationService
     }
 
     #[Asynchronous("async_ingesting")]
-    #[EventHandler(endpointId: "notifyAboutNewDependantRepository")]
-    public function notifyAboutNewDependantRepository(DependantRepositoryDetected $event): void
-    {
-        echo $event->repository . "\n";
-    }
-
-    #[Asynchronous("async_ingesting")]
     #[EventHandler(endpointId: "registerIngestedItem")]
     public function registerIngestedItemOn(DependantRepositoryDetected $event): void
     {
