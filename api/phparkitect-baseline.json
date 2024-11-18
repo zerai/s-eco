@@ -1,0 +1,15 @@
+{
+    "violations": [
+        {
+            "fqcn": "Ingesting\\AdapterForRegisteringIngestedItem\\AmqpAdapterForRegisteringIngestedItem",
+            "line": 18,
+            "error": "depends on Ingesting\\AdapterForRegisteringIngestedItem\\DependantRepositoryDetected, but should not depend on classes outside namespace Ingesting\\Core because we want isolate our ingesting Adapters from ever growing dependencies."
+        },
+        {
+            "fqcn": "Ingesting\\Infrastructure\\Spider\\ItemProcessor\\EventPublisherProcessorItemProcessor",
+            "line": 23,
+            "error": "depends on Ingesting\\AdapterForRegisteringIngestedItem\\DependantRepositoryDetected, but should not depend on these namespaces: Ingesting\\AdapterFor* because of component architecture"
+        }
+    ],
+    "stopOnFailure": false
+}
