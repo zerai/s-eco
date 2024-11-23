@@ -1,8 +1,9 @@
 api_platform:
-    title: Hello API Platform
+    title: S-eco API
     version: 1.0.0
     formats:
         jsonld: ['application/ld+json']
+        json: ['application/json']
     docs_formats:
         jsonld: ['application/ld+json']
         jsonopenapi: ['application/vnd.openapi+json']
@@ -14,5 +15,8 @@ api_platform:
         extra_properties:
             standard_put: true
             rfc_7807_compliant_errors: true
+    mapping:
+        # The list of paths with files or directories where the bundle will look for additional resource files.
+        paths: [ '%kernel.project_dir%/context/ingesting/src/Infrastructure/ApiPlatform/Resource/' ]
     keep_legacy_inflector: false
     use_symfony_listeners: true

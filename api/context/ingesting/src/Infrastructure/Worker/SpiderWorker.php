@@ -18,15 +18,15 @@ class SpiderWorker
 
     public function __invoke(): void
     {
-//        if ($this->spiderFrameworkBundlePool->hasItem('spider_cursor')) {
-//            $httpCursor = $this->spiderFrameworkBundlePool->getItem('spider_cursor');
-//
-//            Roach::startSpider(
-//                FrameworkBundleSpider::class,
-//                new Overrides(startUrls: [$httpCursor->get()]),
-//            );
-//        } else {
-//            Roach::startSpider(FrameworkBundleSpider::class);
-//        }
+        if ($this->spiderFrameworkBundlePool->hasItem('spider_cursor')) {
+            $httpCursor = $this->spiderFrameworkBundlePool->getItem('spider_cursor');
+
+            Roach::startSpider(
+                FrameworkBundleSpider::class,
+                new Overrides(startUrls: [$httpCursor->get()]),
+            );
+        } else {
+            Roach::startSpider(FrameworkBundleSpider::class);
+        }
     }
 }
