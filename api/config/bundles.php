@@ -13,4 +13,6 @@ return [
     Nelexa\RoachPhpBundle\RoachPhpBundle::class => ['all' => true],
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
     Ecotone\SymfonyBundle\EcotoneSymfonyBundle::class => ['all' => true],
+    Nelmio\CorsBundle\NelmioCorsBundle::class => ['all' => true],
+    ApiPlatform\Symfony\Bundle\ApiPlatformBundle::class => ['all' => true],
 ];

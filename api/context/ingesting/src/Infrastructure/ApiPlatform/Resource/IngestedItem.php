@@ -1,31 +1,40 @@
 <?php declare(strict_types=1);
 
-namespace Ingesting\Core\Model;
+namespace Ingesting\Infrastructure\ApiPlatform\Resource;
 
-use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Doctrine\Orm\State\CollectionProvider;
+use ApiPlatform\Doctrine\Orm\State\Options;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use Ingesting\Core\Model\IngestedItem as IngestedItemEntity;
 
-#[ORM\Entity()]
-#[ORM\Table(name: 'ing_ingested_item')]
+#[ApiResource(
+    shortName: 'Item',
+    operations: [
+        new Get(),
+        new GetCollection(),
+    ],
+    routePrefix: '/ingesting',
+    provider: CollectionProvider::class,
+    stateOptions: new Options(entityClass: IngestedItemEntity::class)
+)]
 class IngestedItem
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
     private ?string $dependantFrom = null;
 
-    #[ORM\Column(length: 255)]
     private ?string $repository = null;
 
-    #[ORM\Column]
+    #[ApiFilter(OrderFilter::class)]
     private ?int $starredScore = null;
 
-    #[ORM\Column]
     private ?int $forkScore = null;
 
-    #[ORM\Column]
+    #[ApiFilter(OrderFilter::class)]
     private ?\DateTimeImmutable $registrationDate = null;
 
     public function getId(): ?int
