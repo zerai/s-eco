@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "dependantFrom": "symfony/framework-bundle",
+    "repository": "foo/bar",
+    "starred": 100,
+    "fork": 20
+  },
+  {
+    "id": 2,
+    "dependantFrom": "symfony/framework-bundle",
+    "repository": "foo/bar",
+    "starred": 39,
+    "fork": 20
+  },
+  {
+    "id": 3,
+    "dependantFrom": "symfony/framework-bundle",
+    "repository": "foo/bar",
+    "starred": 92,
+    "fork": 3
+  }
+]

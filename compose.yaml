@@ -50,7 +50,18 @@ services:
       timeout: 10s
 ###< doctrine/doctrine-bundle ###
 
-
+  pwa:
+    image: node:${NODE_VERSION:-20}-alpine
+    profiles: [ pwa, all ]
+    user: "node"
+    working_dir: /home/node/app
+    volumes:
+      - ./pwa/s-eco:/home/node/app
+    expose:
+      - "5173"
+    ports:
+      - "5173:5173"
+    command: ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
 
 
   #########################################################################################################################
