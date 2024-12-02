@@ -20,3 +20,6 @@ api_platform:
         paths: [ '%kernel.project_dir%/context/ingesting/src/Infrastructure/ApiPlatform/Resource/' ]
     keep_legacy_inflector: false
     use_symfony_listeners: true
+    oauth:
+        # To enable or disable OAuth.
+        enabled: false

@@ -12,21 +12,26 @@ use Symfony\Contracts\Cache\CacheInterface;
 class SpiderWorker
 {
     public function __construct(
-        private readonly CacheInterface $spiderFrameworkBundlePool
+        private readonly CacheInterface $spiderFrameworkBundlePool,
+        private readonly bool $moduleIngestingSpiderWorkerEnabled = false,
     ) {
     }
 
     public function __invoke(): void
     {
-        if ($this->spiderFrameworkBundlePool->hasItem('spider_cursor')) {
-            $httpCursor = $this->spiderFrameworkBundlePool->getItem('spider_cursor');
+        if ($this->moduleIngestingSpiderWorkerEnabled) {
+            if ($this->spiderFrameworkBundlePool->hasItem('spider_cursor')) {
+                $httpCursor = $this->spiderFrameworkBundlePool->getItem('spider_cursor');
 
-            Roach::startSpider(
-                FrameworkBundleSpider::class,
-                new Overrides(startUrls: [$httpCursor->get()]),
-            );
+                Roach::startSpider(
+                    FrameworkBundleSpider::class,
+                    new Overrides(startUrls: [$httpCursor->get()]),
+                );
+            } else {
+                Roach::startSpider(FrameworkBundleSpider::class);
+            }
         } else {
-            Roach::startSpider(FrameworkBundleSpider::class);
+            sleep(60);
         }
     }
 }
