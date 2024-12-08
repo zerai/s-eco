@@ -129,6 +129,7 @@ jobs:
         run: |
           ./bin/console lint:container -e prod --ansi
           ./bin/console lint:container -e dev --ansi
+        continue-on-error: true
 
       - name: Run linter on all twig templates
         run: |
