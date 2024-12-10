@@ -70,6 +70,14 @@ updates:
         update-types:
           - "minor"
           - "patch"
+      api-platform:
+        applies-to: "version-updates"
+        dependency-type: "production"
+        patterns:
+          - "api-platform/*"
+        update-types:
+          - "minor"
+          - "patch"
     ignore:
       - dependency-name: "symfony/*"
         update-types: ["version-update:semver-major", "version-update:semver-minor" ]
