@@ -84,7 +84,10 @@
             "symfony/runtime": true
         },
         "audit": {
-            "abandoned": "report"
+            "abandoned": "report",
+            "ignore": {
+                "CVE-2025-24374": "Missing output escaping for the null coalesce operator"
+            }
         },
         "optimize-autoloader": true,
         "sort-packages": true
