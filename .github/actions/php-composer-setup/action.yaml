@@ -22,7 +22,7 @@ inputs:
     php-extensions:
         description: 'The PHP extensions to install'
         required: false
-        default: ''
+        default: ' '
     extensions-cache-key:
         description: 'The key used to cache PHP extensions'
         required: false
