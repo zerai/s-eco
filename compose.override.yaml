@@ -2,6 +2,10 @@
 services:
 ###> doctrine/doctrine-bundle ###
   database:
+    volumes:
+      - ./sys/docker/postgres:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_MULTIPLE_DATABASES: app_test
     ports:
       - target: 5432
         published: 5432
